@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rideau Canal Ice Monitoring Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🏒 Rideau Canal Skateway</h1>
+                <h2>Real-time Ice Monitoring System</h2>
+                <div class="status-badge" id="overallStatus">
+                    <span class="status-text">Loading...</span>
+                </div>
+            </div>
+            <div class="last-update">
+                Last updated: <span id="lastUpdate">--:--:--</span>
+            </div>
+        </header>
+
+        <!-- Location Cards -->
+        <div class="locations-grid">
+            <!-- Dow's Lake -->
+            <div class="location-card" data-location="Dow's Lake">
+                <div class="card-header">
+                    <h3>📍 Dow's Lake</h3>
+                    <span class="safety-badge" id="status-dows">--</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-label">Ice Thickness</span>
+                        <span class="metric-value" id="ice-dows">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Surface Temp</span>
+                        <span class="metric-value" id="temp-dows">--</span>
+                        <span class="metric-unit">°C</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Snow</span>
+                        <span class="metric-value" id="snow-dows">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fifth Avenue -->
+            <div class="location-card" data-location="Fifth Avenue">
+                <div class="card-header">
+                    <h3>📍 Fifth Avenue</h3>
+                    <span class="safety-badge" id="status-fifth">--</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-label">Ice Thickness</span>
+                        <span class="metric-value" id="ice-fifth">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Surface Temp</span>
+                        <span class="metric-value" id="temp-fifth">--</span>
+                        <span class="metric-unit">°C</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Snow</span>
+                        <span class="metric-value" id="snow-fifth">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- NAC -->
+            <div class="location-card" data-location="NAC">
+                <div class="card-header">
+                    <h3>📍 NAC</h3>
+                    <span class="safety-badge" id="status-nac">--</span>
+                </div>
+                <div class="metrics">
+                    <div class="metric">
+                        <span class="metric-label">Ice Thickness</span>
+                        <span class="metric-value" id="ice-nac">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Surface Temp</span>
+                        <span class="metric-value" id="temp-nac">--</span>
+                        <span class="metric-unit">°C</span>
+                    </div>
+                    <div class="metric">
+                        <span class="metric-label">Snow</span>
+                        <span class="metric-value" id="snow-nac">--</span>
+                        <span class="metric-unit">cm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-section">
+            <div class="chart-container">
+                <h3>Ice Thickness Trend (Last Hour)</h3>
+                <canvas id="iceThicknessChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <h3>Temperature Trend (Last Hour)</h3>
+                <canvas id="temperatureChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>National Capital Commission (NCC) - Real-time Monitoring System</p>
+            <p>Data refreshes every 30 seconds | CST8916 Final Project</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

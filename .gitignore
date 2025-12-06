@@ -1,0 +1,111 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json.log
+
+# Logs
+logs/
+*.log
+debug.log
+*.log.*
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Build outputs
+dist/
+build/
+out/
+.next/
+.astro/
+.cache/
+public/build/
+
+# Dependency directories
+jspm_packages/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Optional npm cache directory
+.npm
+.eslintcache
+.stylelintcache
+
+# Test coverage
+coverage/
+coverage/*
+
+# TypeScript
+*.tsbuildinfo
+
+# Parcel/Bundler caches
+.cache/
+.parcel-cache/
+.cache-loader/
+.next/cache/
+
+# Storybook
+.out/
+storybook-static/
+
+# Misc
+*.tgz
+*.gz
+*.zip
+*.rar
+
+# Certificates, keys
+*.pem
+*.key
+*.crt
+
+# Docker
+**/Dockerfile*
+**/.dockerignore
+
+# Firebase / local emulators
+.firebase/
+.firebaserc
+
+# Local history (VSCode extension)
+.history/
+
+# JetBrains
+*.iml
+*.iws
+.idea/
+
+# MacOS Finder tags
+.AppleDouble
+.LSOverride
+
+# Ignore built frontend assets often committed accidentally
+assets/**/*.map
+public/**/*.map
+
+# Keep an example env file in repo; ignore real envs
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
