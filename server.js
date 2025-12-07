@@ -48,9 +48,9 @@ app.get('/api/latest', async (req, res) => {
                 .fetchAll();
 
             if (resources.length > 0) {
-                // Sort by windowEndTime descending and get the first one
+                // Sort by timestamp descending and get the first one
                 resources.sort((a, b) =>
-                    new Date(b.windowEndTime) - new Date(a.windowEndTime)
+                    new Date(b.timestamp) - new Date(a.timestamp)
                 );
                 results.push(resources[0]);
             }
@@ -63,7 +63,8 @@ app.get('/api/latest', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error fetching latest data:', error);
+        console.error("🔥 ERROR in /api/latest:", error.message);
+        console.error(error);   // full stack trace
         res.status(500).json({
             success: false,
             error: 'Failed to fetch latest data'
@@ -90,9 +91,9 @@ app.get('/api/history/:location', async (req, res) => {
             .query(querySpec)
             .fetchAll();
 
-        // Sort by windowEndTime descending and limit
+        // Sort by timestamp descending and limit
         resources.sort((a, b) =>
-            new Date(b.windowEndTime) - new Date(a.windowEndTime)
+            new Date(b.timestamp) - new Date(a.timestamp)
         );
 
         const limitedResults = resources.slice(0, limit);
@@ -104,7 +105,8 @@ app.get('/api/history/:location', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error fetching history:', error);
+        console.error("🔥 ERROR in /api/history:", error.message);
+        console.error(error);
         res.status(500).json({
             success: false,
             error: 'Failed to fetch historical data'
@@ -123,7 +125,7 @@ app.get('/api/status', async (req, res) => {
         for (const location of locations) {
             // Simple query without subquery
             const querySpec = {
-                query: "SELECT c.location, c.safetyStatus, c.windowEndTime FROM c WHERE c.location = @location",
+                query: "SELECT c.location, c.safetyStatus, c.timestamp FROM c WHERE c.location = @location",
                 parameters: [
                     { name: "@location", value: location }
                 ]
@@ -134,9 +136,9 @@ app.get('/api/status', async (req, res) => {
                 .fetchAll();
 
             if (resources.length > 0) {
-                // Sort by windowEndTime descending and get the latest
+                // Sort by timestamp descending and get the latest
                 resources.sort((a, b) =>
-                    new Date(b.windowEndTime) - new Date(a.windowEndTime)
+                    new Date(b.timestamp) - new Date(a.timestamp)
                 );
                 statuses.push(resources[0]);
             }
@@ -153,7 +155,8 @@ app.get('/api/status', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error fetching status:', error);
+        console.error("🔥 ERROR in /api/history:", error.message);
+        console.error(error);
         res.status(500).json({
             success: false,
             error: 'Failed to fetch system status'
@@ -174,9 +177,9 @@ app.get('/api/all', async (req, res) => {
             .query(querySpec)
             .fetchAll();
 
-        // Sort by windowEndTime descending
+        // Sort by timestamp descending
         resources.sort((a, b) =>
-            new Date(b.windowEndTime) - new Date(a.windowEndTime)
+            new Date(b.timestamp) - new Date(a.timestamp)
         );
 
         res.json({
@@ -186,7 +189,8 @@ app.get('/api/all', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error fetching all data:', error);
+        console.error("🔥 ERROR in /api/history:", error.message);
+        console.error(error);
         res.status(500).json({
             success: false,
             error: 'Failed to fetch all data'
@@ -228,3 +232,4 @@ process.on('SIGINT', () => {
     console.log('\n👋 Shutting down server...');
     process.exit(0);
 });
+
