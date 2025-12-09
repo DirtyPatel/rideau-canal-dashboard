@@ -14,7 +14,7 @@ This repository contains the lightweight JavaScript dashboard used to visualize 
 
 - Total reading count per time window
 
-- Technology Stack
+##  Technology Stack
 
 - HTML
 
