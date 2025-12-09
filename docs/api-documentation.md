@@ -1,7 +1,9 @@
+## API documentation
+
 This backend API is used by the Rideau Canal Dashboard to fetch data from Azure Cosmos DB.
 All responses are in JSON.
 
-GET /api/latest
+## GET /api/latest
 
 Returns the newest reading for each location:
 
@@ -29,7 +31,7 @@ Example:
   ]
 }
 
-🔹 GET /api/history/:location
+## GET /api/history/:location
 
 Returns all past records for one location, newest first.
 
@@ -41,19 +43,9 @@ Accepted values:
 
 "NAC"
 
-Example:
-
-GET /api/history/Dow%27s%20Lake
 
 
-Response:
-
-{
-  "success": true,
-  "data": [ ...array of records... ]
-}
-
-🔹 GET /health
+## GET /health
 
 Simple health check to confirm:
 
@@ -67,24 +59,24 @@ Example:
   "status": "healthy"
 }
 
-🔹 GET /
+GET /
 
 Serves the dashboard’s main index.html page.
 
-📂 Data Format
+- Data Format
 
-Every record includes:
+- Every record includes:
 
-location
+- location
 
-timestamp
+- timestamp
 
-Average, max, and min values for:
+- Average, max, and min values for:
 
-Ice thickness
+- Ice thickness
 
-Surface temp
+- Surface temp
 
-External temp
+- External temp
 
-Snow accumulation
+- Snow accumulation
